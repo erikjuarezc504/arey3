@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Ingresos y Egresos - Centro de Belleza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f6fef8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 4px solid #388e3c;
+            animation: slideDown 0.8s ease;
+        }
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            animation: fadeIn 1s ease;
+        }
+        h2 {
+            color: #4caf50;
+            margin-bottom: 1rem;
+        }
+        label i {
+            margin-right: 0.5rem;
+            color: #4caf50;
+        }
+        form select, form input, form textarea, form button {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        form select:focus, form input:focus, form textarea:focus {
+            border-color: #4caf50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+            outline: none;
+        }
+        form button {
+            background-color: #4caf50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #388e3c;
+        }
+        .hidden {
+            display: none;
+        }
+        #respuesta {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            color: #2e7d32;
+            border-radius: 12px;
+            animation: fadeIn 0.8s ease;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @keyframes slideDown {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fas fa-spa"></i> Centro de Belleza - Control</h1>
+</header>
+
+<main>
+    <section>
+        <form id="registroForm">
+            <h2><i class="fas fa-clipboard-list"></i> Registro de Movimiento</h2>
+            
+            <label><i class="fas fa-building"></i> Unidad de Negocio</label>
+            <select name="unidadNegocio" required>
+                <option value="">Selecciona una opción</option>
+                <option value="AREY Morelia">AREY Morelia</option>
+                <option value="AREY Capacitación">AREY Capacitación</option>
+                <option value="AREY Foráneo">AREY Foráneo</option>
+            </select>
+
+            <label><i class="fas fa-user"></i> Registró</label>
+            <select name="registro" required>
+                <option value="">Selecciona quién registró</option>
+                <option value="Yera">Yera</option>
+                <option value="Sara">Sara</option>
+                <option value="Marlene">Marlene</option>
+            </select>
+
+            <label><i class="fas fa-exchange-alt"></i> Tipo de Movimiento</label>
+            <select name="tipoMovimiento" id="tipoMovimiento" required>
+                <option value="">Selecciona tipo de movimiento</option>
+                <option value="Ingreso">Ingreso</option>
+                <option value="Egreso">Egreso</option>
+            </select>
+
+            <div id="ingresoSection" class="hidden">
+                <label><i class="fas fa-money-bill-wave"></i> Tipo de Ingreso</label>
+                <select name="tipoIngreso">
+                    <option value="">Selecciona tipo de ingreso</option>
+                    <option>Delineado de ojos</option>
+                    <option>Depilación con cera</option>
+                    <option>Extensiones de pestañas</option>
+                    <option>Masajes</option>
+                    <option>Micropigmentación de cejas</option>
+                    <option>Micropigmentación de labios</option>
+                    <option>Micropigmentación de ojos</option>
+                    <option>Plasma rico en plaquetas</option>
+                    <option>Power Brows</option>
+                    <option>Tratamientos faciales</option>
+                    <option>Tratamientos reductivos</option>
+                    <option>Depilación láser</option>
+                    <option>Curso labios y ojos</option>
+                    <option>Curso labios</option>
+                    <option>Curso ojos</option>
+                    <option>Curso de cejas, labios y ojos</option>
+                    <option>Curso micropigmentación de cejas</option>
+                    <option>Curso cera española</option>
+                    <option>Curso PRP, dermapen y BB Glow</option>
+                    <option>Curso PRP</option>
+                    <option>Curso Botox</option>
+                    <option>Curso micropuntura brasileña</option>
+                    <option>Curso dermapen</option>
+                    <option>Curso BB Glow</option>
+                    <option>Curso Plasma Pen</option>
+                    <option>Curso mesoterapia</option>
+                    <option>Otros cursos (especificar)</option>
+                    <option>Curso de primeros auxilios</option>
+                    <option>Curso de asepsia y antisepsia</option>
+                    <option>Diplomado de auxiliar de enfermería</option>
+                    <option>Diplomado de micropigmentación facial</option>
+                    <option>Diplomado de podología</option>
+                    <option>Diplomado dermocosmetología</option>
+                </select>
+
+                <label><i class="fas fa-bullhorn"></i> Forma de Captación</label>
+                <select name="formaCaptacion">
+                    <option value="">Selecciona forma de captación</option>
+                    <option>Cliente habitual</option>
+                    <option>Recomendación</option>
+                    <option>Publicación pagada</option>
+                    <option>Publicación orgánica</option>
+                    <option>Alumno</option>
+                </select>
+            </div>
+
+            <div id="egresoSection" class="hidden">
+                <label><i class="fas fa-receipt"></i> Tipo de Egreso</label>
+                <select name="tipoEgreso">
+                    <option value="">Selecciona tipo de egreso</option>
+                    <option>Adquisición de mercancías</option>
+                    <option>Cafetería (café, té, azúcar, agua, refresco)</option>
+                    <option>Extracción de utilidad</option>
+                    <option>Limpieza e higiene</option>
+                    <option>Mantenimiento</option>
+                    <option>Mobiliario y equipos</option>
+                    <option>Nómina</option>
+                    <option>Pago de comisiones</option>
+                    <option>Papelería</option>
+                    <option>Publicidad</option>
+                    <option>Renta</option>
+                    <option>Servicios (agua, luz, internet)</option>
+                    <option>Viáticos (transporte, alimentos, hospedaje)</option>
+                    <option>Gastos personales</option>
+                    <option>Otros (especificar)</option>
+                </select>
+            </div>
+
+            <label><i class="fas fa-user-check"></i> Realizó el Servicio</label>
+            <select name="realizoServicio" required>
+                <option value="">Selecciona quién realizó</option>
+                <option value="Yera">Yera</option>
+                <option value="Sara">Sara</option>
+            </select>
+
+            <label><i class="fas fa-credit-card"></i> Forma de Pago</label>
+            <select name="formaPago" required>
+                <option value="">Selecciona forma de pago</option>
+                <option>Efectivo</option>
+                <option>Tarjeta</option>
+                <option>Transferencia</option>
+            </select>
+
+            <label><i class="fas fa-dollar-sign"></i> Monto (en pesos)</label>
+            <input type="number" name="monto" placeholder="Ej. 1000" required>
+
+            <label><i class="fas fa-comment-dots"></i> Observaciones</label>
+            <textarea name="observaciones" placeholder="Escribe cualquier comentario adicional"></textarea>
+
+            <button type="submit"><i class="fas fa-paper-plane"></i> Registrar Movimiento</button>
+        </form>
+
+        <div id="respuesta" class="hidden"></div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 Centro de Belleza - Desarrollado con 💚
+</footer>
+
+<script>
+    const tipoMovimiento = document.getElementById('tipoMovimiento');
+    const ingresoSection = document.getElementById('ingresoSection');
+    const egresoSection = document.getElementById('egresoSection');
+    const respuestaDiv = document.getElementById('respuesta');
+
+    tipoMovimiento.addEventListener('change', function() {
+        ingresoSection.classList.add('hidden');
+        egresoSection.classList.add('hidden');
+        if (this.value === 'Ingreso') {
+            ingresoSection.classList.remove('hidden');
+        } else if (this.value === 'Egreso') {
+            egresoSection.classList.remove('hidden');
+        }
+    });
+
+    document.getElementById('registroForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        let resumen = '<strong>✅ Movimiento registrado correctamente:</strong><br>';
+        formData.forEach((value, key) => {
+            resumen += `<b>${key}:</b> ${value}<br>`;
+        });
+        resumen += `<br>📧 Se ha enviado un correo de confirmación a: <b>admin@centrodebelleza.com</b>`;
+        respuestaDiv.innerHTML = resumen;
+        respuestaDiv.classList.remove('hidden');
+        this.reset();
+        ingresoSection.classList.add('hidden');
+        egresoSection.classList.add('hidden');
+    });
+</script>
+
+</body>
+</html>
